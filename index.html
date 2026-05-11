@@ -1,119 +1,117 @@
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.rm{background:#ffffff;color:#1a1a1a;max-width:720px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.rm-serif{font-family:Georgia,'Times New Roman',serif}
+.rm-eyebrow,.rm-section-label{font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#999}
 
-  .rm-wrap { font-family: 'DM Sans', sans-serif; color: var(--color-text-primary); max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+.rm-hero{text-align:center;padding:56px 48px 48px;background:#fafafa;border-bottom:1px solid #efefef}
+.rm-hero h1{font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:normal;line-height:1.25;color:#111;margin:14px 0 18px}
+.rm-hero h1 em{font-style:italic;color:#555}
+.rm-hero p{font-size:16px;line-height:1.75;color:#666;max-width:460px;margin:0 auto 28px;font-weight:400}
+.rm-btn{display:inline-block;background:#111;color:#fff;font-size:14px;font-weight:600;padding:13px 28px;border-radius:8px;border:none;cursor:pointer;letter-spacing:0.01em}
+.rm-cta-note{font-size:12px;color:#aaa;margin-top:12px}
 
-  .rm-hero { text-align: center; padding: 2.5rem 1rem 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 2.5rem; }
-  .rm-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 1rem; }
-  .rm-headline { font-family: 'Lora', serif; font-size: 32px; font-weight: 500; line-height: 1.25; margin: 0 0 1rem; color: var(--color-text-primary); }
-  .rm-headline em { font-style: italic; }
-  .rm-subhead { font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--color-text-secondary); max-width: 500px; margin: 0 auto 1.75rem; }
-  .rm-cta-primary { display: inline-block; background: var(--color-text-primary); color: var(--color-background-primary); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 28px; border-radius: var(--border-radius-md); cursor: pointer; border: none; margin-bottom: 8px; }
-  .rm-cta-note { font-size: 12px; color: var(--color-text-secondary); }
+.rm-section{padding:44px 48px}
+.rm-section h2{font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:normal;line-height:1.3;color:#111;margin:12px 0 22px}
 
-  .rm-section { margin-bottom: 2.5rem; }
-  .rm-section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
-  .rm-section-title { font-family: 'Lora', serif; font-size: 22px; font-weight: 500; margin: 0 0 1.25rem; }
+.rm-pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rm-pain-card{background:#f7f7f7;border-radius:10px;padding:16px 18px;border:1px solid #ebebeb}
+.rm-pain-card-title{font-size:13px;font-weight:700;color:#111;margin-bottom:5px}
+.rm-pain-card-body{font-size:13px;color:#777;line-height:1.6}
 
-  .rm-pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
-  .rm-pain-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; border: 0.5px solid var(--color-border-tertiary); }
-  .rm-pain-title { font-size: 13px; font-weight: 500; margin: 0 0 4px; }
-  .rm-pain-body { font-size: 13px; font-weight: 300; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
+.rm-divider{border:none;border-top:1px solid #efefef;margin:0}
 
-  .rm-divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 2.5rem 0; }
+.rm-use-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.rm-use-item{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.7;color:#555}
+.rm-use-dot{width:7px;height:7px;border-radius:50%;background:#ccc;margin-top:8px;flex-shrink:0}
+.rm-use-strong{font-weight:700;color:#111}
 
-  .rm-use-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  .rm-use-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; font-weight: 300; line-height: 1.6; }
-  .rm-use-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-text-secondary); margin-top: 9px; flex-shrink: 0; }
-  .rm-use-strong { font-weight: 500; }
+.rm-science-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.rm-science-card{background:#f7f7f7;border-radius:10px;padding:16px;border:1px solid #ebebeb}
+.rm-science-num{font-family:Georgia,'Times New Roman',serif;font-size:28px;color:#111;margin-bottom:8px}
+.rm-science-body{font-size:12px;color:#777;line-height:1.6}
+.rm-science-intro{font-size:15px;color:#666;line-height:1.75;margin-bottom:6px}
 
-  .rm-science-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 1.25rem; }
-  .rm-science-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1rem 1.1rem; border: 0.5px solid var(--color-border-tertiary); }
-  .rm-science-num { font-family: 'Lora', serif; font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
-  .rm-science-body { font-size: 12px; font-weight: 300; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
+.rm-transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
+.rm-transform-card{border-radius:12px;padding:20px}
+.rm-t-before{background:#f7f7f7;border:1px solid #ebebeb}
+.rm-t-after{background:#fff;border:1px solid #ddd}
+.rm-t-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#bbb;margin-bottom:12px}
+.rm-t-body-before{font-size:13px;line-height:1.65;color:#999;font-style:italic}
+.rm-t-tag{font-size:10px;font-weight:700;background:#111;color:#fff;border-radius:4px;padding:3px 9px;display:inline-block;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase}
+.rm-t-body-after{font-size:14px;line-height:1.65;color:#111;margin-bottom:14px}
+.rm-keyword-chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px}
+.rm-keyword{font-size:11px;font-weight:700;background:#111;color:#fff;border-radius:4px;padding:4px 10px;letter-spacing:0.02em}
+.rm-k-arrow{font-size:12px;color:#ccc}
+.rm-image-box{border:1px dashed #ddd;border-radius:8px;padding:12px 14px;background:#fafafa}
+.rm-image-box-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;margin-bottom:5px}
+.rm-image-box-desc{font-size:12px;color:#888;line-height:1.6}
 
-  .rm-transform { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 1.25rem; align-items: start; }
-  .rm-transform-card { border-radius: var(--border-radius-lg); padding: 1.1rem 1.25rem; border: 0.5px solid var(--color-border-tertiary); }
-  .rm-before { background: var(--color-background-secondary); }
-  .rm-after { background: var(--color-background-primary); }
-  .rm-transform-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 8px; }
-  .rm-transform-body { font-size: 13px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); margin: 0; font-style: italic; }
-  .rm-transform-tag { font-size: 12px; font-weight: 500; color: var(--color-text-primary); background: var(--color-background-secondary); border-radius: 4px; padding: 2px 8px; display: inline-block; margin-bottom: 6px; }
-  .rm-transform-note { font-size: 12px; color: var(--color-text-secondary); margin-top: 10px; font-weight: 300; line-height: 1.5; }
+.rm-steps{display:flex;flex-direction:column}
+.rm-step{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #f5f5f5;align-items:flex-start}
+.rm-step:last-child{border-bottom:none}
+.rm-step-num{font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#ddd;min-width:26px;padding-top:1px}
+.rm-step-title{font-size:14px;font-weight:700;color:#111;margin-bottom:4px}
+.rm-step-body{font-size:13px;color:#777;line-height:1.6}
 
-  .rm-keyword-chain { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
-  .rm-keyword { font-size: 12px; font-weight: 500; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 3px 10px; color: var(--color-text-primary); }
-  .rm-arrow { font-size: 12px; color: var(--color-text-secondary); display: flex; align-items: center; }
+.rm-pricing-wrap{background:#f7f7f7;border-radius:14px;border:1px solid #ebebeb;padding:36px;text-align:center;margin-top:22px}
+.rm-pricing-tag{font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+.rm-pricing-amount{font-family:Georgia,'Times New Roman',serif;font-size:58px;font-weight:normal;color:#111;line-height:1;margin-bottom:6px}
+.rm-pricing-sub{font-size:14px;color:#888;margin-bottom:24px}
+.rm-pricing-features{list-style:none;text-align:left;max-width:300px;margin:0 auto 26px;display:flex;flex-direction:column;gap:11px}
+.rm-pricing-feature{display:flex;align-items:center;gap:10px;font-size:13px;color:#555}
+.rm-pricing-check{width:18px;height:18px;min-width:18px;background:#111;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rm-pricing-check::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
+.rm-pricing-or{font-size:12px;color:#aaa;margin-top:14px}
 
-  .rm-image-box { border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 0.85rem 1rem; margin-top: 12px; background: var(--color-background-secondary); }
-  .rm-image-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 4px; }
-  .rm-image-desc { font-size: 12px; font-weight: 300; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
-
-  .rm-steps { display: flex; flex-direction: column; gap: 0; margin-top: 1.25rem; }
-  .rm-step { display: flex; gap: 16px; padding: 1rem 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
-  .rm-step:last-child { border-bottom: none; }
-  .rm-step-num { font-family: 'Lora', serif; font-size: 18px; font-weight: 500; color: var(--color-text-secondary); min-width: 24px; }
-  .rm-step-title { font-size: 14px; font-weight: 500; margin: 0 0 2px; }
-  .rm-step-body { font-size: 13px; font-weight: 300; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
-
-  .rm-pricing { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); padding: 1.75rem; margin-top: 1.25rem; text-align: center; }
-  .rm-price-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
-  .rm-price-main { font-family: 'Lora', serif; font-size: 40px; font-weight: 500; margin: 0 0 2px; }
-  .rm-price-sub { font-size: 13px; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 1.25rem; }
-  .rm-price-features { list-style: none; padding: 0; margin: 0 auto 1.5rem; text-align: left; max-width: 300px; display: flex; flex-direction: column; gap: 8px; }
-  .rm-price-feature { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 300; }
-  .rm-check { color: var(--color-text-primary); font-size: 15px; }
-  .rm-price-or { font-size: 12px; color: var(--color-text-secondary); margin: 10px 0 0; }
-
-  .rm-waitlist { text-align: center; padding: 2rem 1rem; border-top: 0.5px solid var(--color-border-tertiary); margin-top: 2.5rem; }
-  .rm-waitlist-title { font-family: 'Lora', serif; font-size: 22px; font-weight: 500; margin: 0 0 0.5rem; }
-  .rm-waitlist-sub { font-size: 14px; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 1.25rem; }
-  .rm-input-row { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
-  .rm-email-input { flex: 1; padding: 10px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-primary); font-family: 'DM Sans', sans-serif; font-size: 14px; }
-  .rm-cta-secondary { background: var(--color-text-primary); color: var(--color-background-primary); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: var(--border-radius-md); border: none; cursor: pointer; white-space: nowrap; }
+.rm-waitlist{text-align:center;padding:52px 48px;background:#fafafa;border-top:1px solid #efefef}
+.rm-waitlist h2{font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:normal;color:#111;margin-bottom:12px;line-height:1.3}
+.rm-waitlist p{font-size:15px;color:#888;margin-bottom:24px;line-height:1.7}
+.rm-input-row{display:flex;gap:8px;max-width:420px;margin:0 auto}
+.rm-email-input{flex:1;padding:12px 16px;border-radius:8px;border:1px solid #ddd;font-size:14px;color:#111;background:#fff;outline:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.rm-email-input:focus{border-color:#999}
+.rm-btn-outline{background:#fff;color:#111;font-size:13px;font-weight:700;padding:12px 20px;border-radius:8px;border:1px solid #ddd;cursor:pointer;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
 </style>
 
-<div class="rm-wrap">
-  <!-- Hero -->
+<div class="rm">
+
   <div class="rm-hero">
     <p class="rm-eyebrow">Interview prep, reimagined</p>
-    <h1 class="rm-headline">Your best stories deserve<br><em>to be remembered.</em></h1>
-    <p class="rm-subhead">We take your raw, rambling notes and turn them into a concise talk track and a visual memory anchor — so you walk into every interview calm, clear, and in control.</p>
-    <button class="rm-cta-primary">Try a story — $19</button>
+    <h1 class="rm-serif">Your best stories deserve<br><em>to be remembered.</em></h1>
+    <p>We take your raw, rambling notes and turn them into a concise talk track and a visual memory anchor — so you walk into every interview calm, clear, and in control.</p>
+    <button class="rm-btn">Try a story — $19</button>
     <p class="rm-cta-note">Or get all 10 stories for $149 &nbsp;·&nbsp; Beta founder rate</p>
   </div>
 
-  <!-- The problem -->
   <div class="rm-section">
     <p class="rm-section-label">The problem</p>
-    <h2 class="rm-section-title">Your notes aren't the issue.<br>The format is.</h2>
+    <h2>Your notes aren't the issue.<br>The format is.</h2>
     <div class="rm-pain-grid">
       <div class="rm-pain-card">
-        <p class="rm-pain-title">The blank-out</p>
-        <p class="rm-pain-body">You glance at a wall of text, lose your place, and your mind goes quiet — right when it matters most.</p>
+        <p class="rm-pain-card-title">The blank-out</p>
+        <p class="rm-pain-card-body">You glance at a wall of text, lose your place, and your mind goes quiet — right when it matters most.</p>
       </div>
       <div class="rm-pain-card">
-        <p class="rm-pain-title">The ramble</p>
-        <p class="rm-pain-body">You start talking but can't find the point. You sound scattered, even though you know exactly what you mean.</p>
+        <p class="rm-pain-card-title">The ramble</p>
+        <p class="rm-pain-card-body">You start talking but can't find the point. You sound scattered, even though you know exactly what you mean.</p>
       </div>
       <div class="rm-pain-card">
-        <p class="rm-pain-title">The disconnect</p>
-        <p class="rm-pain-body">Your interviewer stops following — because you're reciting, not talking to them.</p>
+        <p class="rm-pain-card-title">The disconnect</p>
+        <p class="rm-pain-card-body">Your interviewer stops following — because you're reciting, not talking to them.</p>
       </div>
       <div class="rm-pain-card">
-        <p class="rm-pain-title">The aftermath</p>
-        <p class="rm-pain-body">"I knew the material. I just couldn't say it." That feeling is fixable.</p>
+        <p class="rm-pain-card-title">The aftermath</p>
+        <p class="rm-pain-card-body">"I knew the material. I just couldn't say it." That feeling is fixable.</p>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider" />
+  <hr class="rm-divider">
 
-  <!-- Use cases -->
   <div class="rm-section">
     <p class="rm-section-label">Built for</p>
-    <h2 class="rm-section-title">Any moment with real stakes.</h2>
+    <h2>Any moment with real stakes.</h2>
     <ul class="rm-use-list">
       <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">Job interviews</span> — Keep your stories sharp, confident, and free of filler.</span></li>
       <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">Executive presentations</span> — Open with authority. Stay on message when the questions get hard.</span></li>
@@ -122,13 +120,12 @@
     </ul>
   </div>
 
-  <hr class="rm-divider" />
+  <hr class="rm-divider">
 
-  <!-- The science -->
   <div class="rm-section">
     <p class="rm-section-label">The science</p>
-    <h2 class="rm-section-title">Your brain prefers pictures.<br>We work with that.</h2>
-    <p style="font-size:15px; font-weight:300; color: var(--color-text-secondary); line-height:1.7; margin: 0 0 1rem;">The Picture Superiority Effect is well-documented: images are recalled far more reliably than words. We use this to your advantage.</p>
+    <h2>Your brain prefers pictures.<br>We work with that.</h2>
+    <p class="rm-science-intro">The Picture Superiority Effect is well-documented: images are recalled far more reliably than words. We use this to your advantage.</p>
     <div class="rm-science-row">
       <div class="rm-science-card">
         <p class="rm-science-num">01</p>
@@ -136,53 +133,51 @@
       </div>
       <div class="rm-science-card">
         <p class="rm-science-num">02</p>
-        <p class="rm-science-body">Everyday objects become memory anchors — you're navigating a mental space, not reciting a script.</p>
+        <p class="rm-science-body">Everyday objects become memory anchors — you navigate a mental space, not recite a script.</p>
       </div>
       <div class="rm-science-card">
         <p class="rm-science-num">03</p>
-        <p class="rm-science-body">Even after a tough curveball question, the visual stays. You can't unsee a mental image.</p>
+        <p class="rm-science-body">Even after a curveball question, the visual stays. You can't unsee a mental image.</p>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider" />
+  <hr class="rm-divider">
 
-  <!-- Before / After -->
   <div class="rm-section">
     <p class="rm-section-label">The transformation</p>
-    <h2 class="rm-section-title">From messy draft<br>to clear delivery.</h2>
-    <div class="rm-transform">
-      <div class="rm-transform-card rm-before">
-        <p class="rm-transform-label">Before — raw notes</p>
-        <p class="rm-transform-body">"So I was leading the product launch for our enterprise tier, and three weeks before go-live the main vendor just disappeared — like, stopped responding entirely. I had to figure out if we rebuild the integration ourselves or find someone new, but the timeline was impossible either way. I pulled in the dev lead and we stayed on it all weekend. I kept the exec team updated every day even though there wasn't much good news to share. We ended up finding a backup vendor by Tuesday and hit the launch date. The product actually got a great reception. I guess the point is that we recovered fully, but I always get lost trying to explain the middle part and I worry it sounds too chaotic."</p>
+    <h2>From messy draft<br>to clear delivery.</h2>
+    <div class="rm-transform-grid">
+      <div class="rm-transform-card rm-t-before">
+        <p class="rm-t-label">Before — raw notes</p>
+        <p class="rm-t-body-before">"So I was leading the product launch for our enterprise tier, and three weeks before go-live the main vendor just disappeared — like, stopped responding entirely. I had to figure out if we rebuild the integration ourselves or find someone new, but the timeline was impossible either way. I pulled in the dev lead and we stayed on it all weekend. I kept the exec team updated every day even though there wasn't much good news to share. We ended up finding a backup vendor by Tuesday and hit the launch date. The product got a great reception. I always get lost trying to explain the middle part and worry it sounds too chaotic."</p>
       </div>
-      <div class="rm-transform-card rm-after">
-        <p class="rm-transform-label">After — the recall map</p>
-        <span class="rm-transform-tag">Talk track</span>
-        <p class="rm-transform-body" style="font-style:normal; color: var(--color-text-primary);">"Vendor vanished three weeks before launch. I made the call, kept leadership informed daily, and we recovered with a new partner — on time."</p>
+      <div class="rm-transform-card rm-t-after">
+        <p class="rm-t-label">After — the recall map</p>
+        <span class="rm-t-tag">Talk track</span>
+        <p class="rm-t-body-after">"Vendor vanished three weeks before launch. I made the call, kept leadership informed daily, and we recovered with a new partner — on time."</p>
         <div class="rm-keyword-chain">
           <span class="rm-keyword">Vanished vendor</span>
-          <span class="rm-arrow">→</span>
+          <span class="rm-k-arrow">→</span>
           <span class="rm-keyword">The call</span>
-          <span class="rm-arrow">→</span>
+          <span class="rm-k-arrow">→</span>
           <span class="rm-keyword">Daily updates</span>
-          <span class="rm-arrow">→</span>
+          <span class="rm-k-arrow">→</span>
           <span class="rm-keyword">Full recovery</span>
         </div>
         <div class="rm-image-box">
-          <p class="rm-image-label">Visual anchor</p>
-          <p class="rm-image-desc">A fire extinguisher mounted next to a front door — the extinguisher triggers the crisis, the door triggers the exit and result. One glance, full story.</p>
+          <p class="rm-image-box-label">Visual anchor</p>
+          <p class="rm-image-box-desc">A fire extinguisher mounted next to a front door — the extinguisher triggers the crisis, the door triggers the exit and result. One glance, full story.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider" />
+  <hr class="rm-divider">
 
-  <!-- How it works -->
   <div class="rm-section">
     <p class="rm-section-label">How it works</p>
-    <h2 class="rm-section-title">Three steps.<br>One story you'll never forget.</h2>
+    <h2>Three steps.<br>One story you'll never forget.</h2>
     <div class="rm-steps">
       <div class="rm-step">
         <span class="rm-step-num">1</span>
@@ -208,34 +203,32 @@
     </div>
   </div>
 
-  <hr class="rm-divider" />
+  <hr class="rm-divider">
 
-  <!-- Pricing -->
   <div class="rm-section">
     <p class="rm-section-label">Early access pricing</p>
-    <h2 class="rm-section-title">Prep one story.<br>Or come ready for anything.</h2>
-    <div class="rm-pricing">
-      <p class="rm-price-tag">Beta founder rate</p>
-      <p class="rm-price-main">$149</p>
-      <p class="rm-price-sub">Full interview prep — all 10 stories</p>
-      <ul class="rm-price-features">
-        <li class="rm-price-feature"><span class="rm-check"><i class="ti ti-check"></i></span>Concise talk track for each story</li>
-        <li class="rm-price-feature"><span class="rm-check"><i class="ti ti-check"></i></span>3 visual memory anchors per story</li>
-        <li class="rm-price-feature"><span class="rm-check"><i class="ti ti-check"></i></span>Automatic framework matching for your story level</li>
-        <li class="rm-price-feature"><span class="rm-check"><i class="ti ti-check"></i></span>Priority access during beta</li>
+    <h2>Prep one story.<br>Or come ready for anything.</h2>
+    <div class="rm-pricing-wrap">
+      <p class="rm-pricing-tag">Beta founder rate</p>
+      <p class="rm-pricing-amount">$149</p>
+      <p class="rm-pricing-sub">Full interview prep — all 10 stories</p>
+      <ul class="rm-pricing-features">
+        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Concise talk track for each story</li>
+        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>3 visual memory anchors per story</li>
+        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Automatic framework matching for your story level</li>
+        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Priority access during beta</li>
       </ul>
-      <button class="rm-cta-primary">Claim My Founder Rate — $149</button>
-      <p class="rm-price-or">Just testing the water? Start with one story for $19.</p>
+      <button class="rm-btn">Claim My Founder Rate — $149</button>
+      <p class="rm-pricing-or">Just testing the water? Start with one story for $19.</p>
     </div>
   </div>
 
-  <!-- Waitlist -->
   <div class="rm-waitlist">
-    <h2 class="rm-waitlist-title">Your next interview<br>is closer than you think.</h2>
-    <p class="rm-waitlist-sub">Join the private beta. Be the first to turn your stories into a map you'll never forget.</p>
+    <h2>Your next interview<br>is closer than you think.</h2>
+    <p>Join the private beta. Be the first to turn<br>your stories into a map you'll never forget.</p>
     <div class="rm-input-row">
-      <input class="rm-email-input" type="email" placeholder="your@email.com" />
-      <button class="rm-cta-secondary">Join waitlist</button>
+      <input class="rm-email-input" type="email" placeholder="your@email.com">
+      <button class="rm-btn" style="white-space:nowrap;padding:12px 20px;font-size:13px">Join waitlist</button>
     </div>
   </div>
 
