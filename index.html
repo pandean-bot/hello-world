@@ -1,235 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Recall Map — Interview Prep, Reimagined</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-.rm{background:#ffffff;color:#1a1a1a;max-width:720px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
-.rm-serif{font-family:Georgia,'Times New Roman',serif}
-.rm-eyebrow,.rm-section-label{font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#999}
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #ebebeb;
+      --gray-300: #ddd;
+      --gray-400: #bbb;
+      --gray-500: #999;
+      --gray-600: #777;
+      --gray-700: #555;
+      --gray-800: #333;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
 
-.rm-hero{text-align:center;padding:56px 48px 48px;background:#fafafa;border-bottom:1px solid #efefef}
-.rm-hero h1{font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:normal;line-height:1.25;color:#111;margin:14px 0 18px}
-.rm-hero h1 em{font-style:italic;color:#555}
-.rm-hero p{font-size:16px;line-height:1.75;color:#666;max-width:460px;margin:0 auto 28px;font-weight:400}
-.rm-btn{display:inline-block;background:#111;color:#fff;font-size:14px;font-weight:600;padding:13px 28px;border-radius:8px;border:none;cursor:pointer;letter-spacing:0.01em}
-.rm-cta-note{font-size:12px;color:#aaa;margin-top:12px}
+    html { scroll-behavior: smooth; }
 
-.rm-section{padding:44px 48px}
-.rm-section h2{font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:normal;line-height:1.3;color:#111;margin:12px 0 22px}
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.rm-pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.rm-pain-card{background:#f7f7f7;border-radius:10px;padding:16px 18px;border:1px solid #ebebeb}
-.rm-pain-card-title{font-size:13px;font-weight:700;color:#111;margin-bottom:5px}
-.rm-pain-card-body{font-size:13px;color:#777;line-height:1.6}
+    .page { max-width: 760px; margin: 0 auto; }
 
-.rm-divider{border:none;border-top:1px solid #efefef;margin:0}
+    /* ── Utilities ── */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 10px;
+      display: block;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: normal;
+      line-height: 1.25;
+      color: var(--black);
+      margin-bottom: 22px;
+    }
+    .divider { border: none; border-top: 1px solid var(--gray-200); margin: 0; }
 
-.rm-use-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.rm-use-item{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.7;color:#555}
-.rm-use-dot{width:7px;height:7px;border-radius:50%;background:#ccc;margin-top:8px;flex-shrink:0}
-.rm-use-strong{font-weight:700;color:#111}
+    /* ── Button ── */
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: opacity 0.15s ease;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-sm { font-size: 13px; padding: 12px 20px; white-space: nowrap; }
 
-.rm-science-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-.rm-science-card{background:#f7f7f7;border-radius:10px;padding:16px;border:1px solid #ebebeb}
-.rm-science-num{font-family:Georgia,'Times New Roman',serif;font-size:28px;color:#111;margin-bottom:8px}
-.rm-science-body{font-size:12px;color:#777;line-height:1.6}
-.rm-science-intro{font-size:15px;color:#666;line-height:1.75;margin-bottom:6px}
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 64px 48px 52px;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: normal;
+      line-height: 1.2;
+      color: var(--black);
+      margin: 14px 0 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gray-600); }
+    .hero p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--gray-600);
+      max-width: 480px;
+      margin: 0 auto 30px;
+    }
+    .hero-note { font-size: 12px; color: var(--gray-400); margin-top: 12px; }
 
-.rm-transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
-.rm-transform-card{border-radius:12px;padding:20px}
-.rm-t-before{background:#f7f7f7;border:1px solid #ebebeb}
-.rm-t-after{background:#fff;border:1px solid #ddd}
-.rm-t-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#bbb;margin-bottom:12px}
-.rm-t-body-before{font-size:13px;line-height:1.65;color:#999;font-style:italic}
-.rm-t-tag{font-size:10px;font-weight:700;background:#111;color:#fff;border-radius:4px;padding:3px 9px;display:inline-block;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase}
-.rm-t-body-after{font-size:14px;line-height:1.65;color:#111;margin-bottom:14px}
-.rm-keyword-chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px}
-.rm-keyword{font-size:11px;font-weight:700;background:#111;color:#fff;border-radius:4px;padding:4px 10px;letter-spacing:0.02em}
-.rm-k-arrow{font-size:12px;color:#ccc}
-.rm-image-box{border:1px dashed #ddd;border-radius:8px;padding:12px 14px;background:#fafafa}
-.rm-image-box-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;margin-bottom:5px}
-.rm-image-box-desc{font-size:12px;color:#888;line-height:1.6}
+    /* ── Sections ── */
+    .section { padding: 48px 48px; }
 
-.rm-steps{display:flex;flex-direction:column}
-.rm-step{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #f5f5f5;align-items:flex-start}
-.rm-step:last-child{border-bottom:none}
-.rm-step-num{font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#ddd;min-width:26px;padding-top:1px}
-.rm-step-title{font-size:14px;font-weight:700;color:#111;margin-bottom:4px}
-.rm-step-body{font-size:13px;color:#777;line-height:1.6}
+    /* ── Pain Grid ── */
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pain-card {
+      background: var(--gray-50);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      border: 1px solid var(--gray-200);
+    }
+    .pain-card-title { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+    .pain-card-body { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
 
-.rm-pricing-wrap{background:#f7f7f7;border-radius:14px;border:1px solid #ebebeb;padding:36px;text-align:center;margin-top:22px}
-.rm-pricing-tag{font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
-.rm-pricing-amount{font-family:Georgia,'Times New Roman',serif;font-size:58px;font-weight:normal;color:#111;line-height:1;margin-bottom:6px}
-.rm-pricing-sub{font-size:14px;color:#888;margin-bottom:24px}
-.rm-pricing-features{list-style:none;text-align:left;max-width:300px;margin:0 auto 26px;display:flex;flex-direction:column;gap:11px}
-.rm-pricing-feature{display:flex;align-items:center;gap:10px;font-size:13px;color:#555}
-.rm-pricing-check{width:18px;height:18px;min-width:18px;background:#111;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.rm-pricing-check::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
-.rm-pricing-or{font-size:12px;color:#aaa;margin-top:14px}
+    /* ── Use List ── */
+    .use-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .use-item { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; line-height: 1.7; color: var(--gray-700); }
+    .use-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-300); margin-top: 9px; flex-shrink: 0; }
+    .use-strong { font-weight: 700; color: var(--black); }
 
-.rm-waitlist{text-align:center;padding:52px 48px;background:#fafafa;border-top:1px solid #efefef}
-.rm-waitlist h2{font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:normal;color:#111;margin-bottom:12px;line-height:1.3}
-.rm-waitlist p{font-size:15px;color:#888;margin-bottom:24px;line-height:1.7}
-.rm-input-row{display:flex;gap:8px;max-width:420px;margin:0 auto}
-.rm-email-input{flex:1;padding:12px 16px;border-radius:8px;border:1px solid #ddd;font-size:14px;color:#111;background:#fff;outline:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
-.rm-email-input:focus{border-color:#999}
-.rm-btn-outline{background:#fff;color:#111;font-size:13px;font-weight:700;padding:12px 20px;border-radius:8px;border:1px solid #ddd;cursor:pointer;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
-</style>
+    /* ── Science ── */
+    .science-intro { font-size: 15px; color: var(--gray-600); line-height: 1.75; margin-bottom: 6px; }
+    .science-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .science-card {
+      background: var(--gray-50);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--gray-200);
+    }
+    .science-num { font-family: var(--serif); font-size: 30px; color: var(--black); margin-bottom: 8px; }
+    .science-body { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
 
-<div class="rm">
+    /* ── Transformation ── */
+    .transform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; align-items: start; }
+    .transform-card { border-radius: var(--radius-lg); padding: 22px; }
+    .t-before { background: var(--gray-50); border: 1px solid var(--gray-200); }
+    .t-after { background: var(--white); border: 1px solid var(--gray-300); }
+    .t-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 12px;
+    }
+    .t-body-before { font-size: 13px; line-height: 1.65; color: var(--gray-500); font-style: italic; }
+    .t-tag {
+      font-size: 10px; font-weight: 700; background: var(--black); color: var(--white);
+      border-radius: 4px; padding: 3px 9px; display: inline-block;
+      margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .t-body-after { font-size: 14px; line-height: 1.65; color: var(--black); margin-bottom: 14px; }
+    .keyword-chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 14px; }
+    .keyword {
+      font-size: 11px; font-weight: 700; background: var(--black); color: var(--white);
+      border-radius: 4px; padding: 4px 10px; letter-spacing: 0.02em;
+    }
+    .k-arrow { font-size: 13px; color: var(--gray-300); }
+    .image-box {
+      border: 1px dashed var(--gray-300); border-radius: var(--radius-sm);
+      padding: 13px 15px; background: var(--gray-50);
+    }
+    .image-box-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 5px;
+    }
+    .image-box-desc { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
 
-  <div class="rm-hero">
-    <p class="rm-eyebrow">Interview prep, reimagined</p>
-    <h1 class="rm-serif">Your best stories deserve<br><em>to be remembered.</em></h1>
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; }
+    .step {
+      display: flex; gap: 22px; padding: 20px 0;
+      border-bottom: 1px solid var(--gray-100); align-items: flex-start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num { font-family: var(--serif); font-size: 24px; color: var(--gray-300); min-width: 28px; padding-top: 1px; }
+    .step-title { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+    .step-body { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── Pricing ── */
+    .pricing-wrap {
+      background: var(--gray-50);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      padding: 40px;
+      text-align: center;
+      margin-top: 22px;
+    }
+    .pricing-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 12px;
+    }
+    .pricing-amount {
+      font-family: var(--serif); font-size: 64px; font-weight: normal;
+      color: var(--black); line-height: 1; margin-bottom: 6px;
+    }
+    .pricing-sub { font-size: 14px; color: var(--gray-500); margin-bottom: 26px; }
+    .pricing-features {
+      list-style: none; text-align: left; max-width: 310px;
+      margin: 0 auto 28px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .pricing-feature { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--gray-700); }
+    .pricing-check {
+      width: 19px; height: 19px; min-width: 19px;
+      background: var(--black); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--white); font-weight: 700;
+    }
+    .pricing-or { font-size: 12px; color: var(--gray-400); margin-top: 14px; }
+
+    /* ── Waitlist ── */
+    .waitlist {
+      text-align: center;
+      padding: 60px 48px;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+    }
+    .waitlist h2 { font-size: 32px; margin-bottom: 12px; }
+    .waitlist p { font-size: 15px; color: var(--gray-500); margin-bottom: 26px; line-height: 1.7; }
+
+    /* ── Form ── */
+    .waitlist-form { display: flex; gap: 8px; max-width: 440px; margin: 0 auto; }
+    .email-input {
+      flex: 1; padding: 12px 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-300); font-size: 14px; color: var(--black);
+      background: var(--white); outline: none; font-family: var(--sans);
+      transition: border-color 0.15s ease;
+    }
+    .email-input:focus { border-color: var(--gray-600); }
+    .form-success {
+      display: none; font-size: 14px; color: var(--gray-600);
+      margin-top: 16px; font-style: italic;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; padding: 24px;
+      font-size: 12px; color: var(--gray-400);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 620px) {
+      .hero { padding: 48px 24px 40px; }
+      .hero h1 { font-size: 30px; }
+      .section { padding: 40px 24px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .science-row { grid-template-columns: 1fr; }
+      .transform-grid { grid-template-columns: 1fr; }
+      .waitlist { padding: 48px 24px; }
+      .waitlist-form { flex-direction: column; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <span class="eyebrow">Interview prep, reimagined</span>
+    <h1>Your best stories deserve<br><em>to be remembered.</em></h1>
     <p>We take your raw, rambling notes and turn them into a concise talk track and a visual memory anchor — so you walk into every interview calm, clear, and in control.</p>
-    <button class="rm-btn">Try a story — $19</button>
-    <p class="rm-cta-note">Or get all 10 stories for $149 &nbsp;·&nbsp; Beta founder rate</p>
+    <a href="#waitlist" class="btn">Try a story — $19</a>
+    <p class="hero-note">Or get all 10 stories for $149 &nbsp;·&nbsp; Beta founder rate</p>
   </div>
 
-  <div class="rm-section">
-    <p class="rm-section-label">The problem</p>
+  <!-- ── The Problem ── -->
+  <div class="section">
+    <span class="section-label">The problem</span>
     <h2>Your notes aren't the issue.<br>The format is.</h2>
-    <div class="rm-pain-grid">
-      <div class="rm-pain-card">
-        <p class="rm-pain-card-title">The blank-out</p>
-        <p class="rm-pain-card-body">You glance at a wall of text, lose your place, and your mind goes quiet — right when it matters most.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p class="pain-card-title">The blank-out</p>
+        <p class="pain-card-body">You glance at a wall of text, lose your place, and your mind goes quiet — right when it matters most.</p>
       </div>
-      <div class="rm-pain-card">
-        <p class="rm-pain-card-title">The ramble</p>
-        <p class="rm-pain-card-body">You start talking but can't find the point. You sound scattered, even though you know exactly what you mean.</p>
+      <div class="pain-card">
+        <p class="pain-card-title">The ramble</p>
+        <p class="pain-card-body">You start talking but can't find the point. You sound scattered, even though you know exactly what you mean.</p>
       </div>
-      <div class="rm-pain-card">
-        <p class="rm-pain-card-title">The disconnect</p>
-        <p class="rm-pain-card-body">Your interviewer stops following — because you're reciting, not talking to them.</p>
+      <div class="pain-card">
+        <p class="pain-card-title">The disconnect</p>
+        <p class="pain-card-body">Your interviewer stops following — because you're reciting, not talking to them.</p>
       </div>
-      <div class="rm-pain-card">
-        <p class="rm-pain-card-title">The aftermath</p>
-        <p class="rm-pain-card-body">"I knew the material. I just couldn't say it." That feeling is fixable.</p>
+      <div class="pain-card">
+        <p class="pain-card-title">The aftermath</p>
+        <p class="pain-card-body">"I knew the material. I just couldn't say it." That feeling is fixable.</p>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider">
+  <hr class="divider">
 
-  <div class="rm-section">
-    <p class="rm-section-label">Built for</p>
+  <!-- ── Built For ── -->
+  <div class="section">
+    <span class="section-label">Built for</span>
     <h2>Any moment with real stakes.</h2>
-    <ul class="rm-use-list">
-      <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">Job interviews</span> — Keep your stories sharp, confident, and free of filler.</span></li>
-      <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">Executive presentations</span> — Open with authority. Stay on message when the questions get hard.</span></li>
-      <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">High-stakes pitches</span> — Deliver your value without glancing at a slide.</span></li>
-      <li class="rm-use-item"><span class="rm-use-dot"></span><span><span class="rm-use-strong">Speeches and toasts</span> — Be present with your audience, not buried in a piece of paper.</span></li>
+    <ul class="use-list">
+      <li class="use-item"><span class="use-dot"></span><span><span class="use-strong">Job interviews</span> — Keep your stories sharp, confident, and free of filler.</span></li>
+      <li class="use-item"><span class="use-dot"></span><span><span class="use-strong">Executive presentations</span> — Open with authority. Stay on message when the questions get hard.</span></li>
+      <li class="use-item"><span class="use-dot"></span><span><span class="use-strong">High-stakes pitches</span> — Deliver your value without glancing at a slide.</span></li>
+      <li class="use-item"><span class="use-dot"></span><span><span class="use-strong">Speeches and toasts</span> — Be present with your audience, not buried in a piece of paper.</span></li>
     </ul>
   </div>
 
-  <hr class="rm-divider">
+  <hr class="divider">
 
-  <div class="rm-section">
-    <p class="rm-section-label">The science</p>
+  <!-- ── The Science ── -->
+  <div class="section">
+    <span class="section-label">The science</span>
     <h2>Your brain prefers pictures.<br>We work with that.</h2>
-    <p class="rm-science-intro">The Picture Superiority Effect is well-documented: images are recalled far more reliably than words. We use this to your advantage.</p>
-    <div class="rm-science-row">
-      <div class="rm-science-card">
-        <p class="rm-science-num">01</p>
-        <p class="rm-science-body">A single image instantly triggers a concept — no scanning, no decoding.</p>
+    <p class="science-intro">The Picture Superiority Effect is well-documented: images are recalled far more reliably than words. We use this to your advantage.</p>
+    <div class="science-row">
+      <div class="science-card">
+        <p class="science-num">01</p>
+        <p class="science-body">A single image instantly triggers a concept — no scanning, no decoding.</p>
       </div>
-      <div class="rm-science-card">
-        <p class="rm-science-num">02</p>
-        <p class="rm-science-body">Everyday objects become memory anchors — you navigate a mental space, not recite a script.</p>
+      <div class="science-card">
+        <p class="science-num">02</p>
+        <p class="science-body">Everyday objects become memory anchors — you navigate a mental space, not recite a script.</p>
       </div>
-      <div class="rm-science-card">
-        <p class="rm-science-num">03</p>
-        <p class="rm-science-body">Even after a curveball question, the visual stays. You can't unsee a mental image.</p>
+      <div class="science-card">
+        <p class="science-num">03</p>
+        <p class="science-body">Even after a curveball question, the visual stays. You can't unsee a mental image.</p>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider">
+  <hr class="divider">
 
-  <div class="rm-section">
-    <p class="rm-section-label">The transformation</p>
+  <!-- ── Transformation ── -->
+  <div class="section">
+    <span class="section-label">The transformation</span>
     <h2>From messy draft<br>to clear delivery.</h2>
-    <div class="rm-transform-grid">
-      <div class="rm-transform-card rm-t-before">
-        <p class="rm-t-label">Before — raw notes</p>
-        <p class="rm-t-body-before">"So I was leading the product launch for our enterprise tier, and three weeks before go-live the main vendor just disappeared — like, stopped responding entirely. I had to figure out if we rebuild the integration ourselves or find someone new, but the timeline was impossible either way. I pulled in the dev lead and we stayed on it all weekend. I kept the exec team updated every day even though there wasn't much good news to share. We ended up finding a backup vendor by Tuesday and hit the launch date. The product got a great reception. I always get lost trying to explain the middle part and worry it sounds too chaotic."</p>
+    <div class="transform-grid">
+      <div class="transform-card t-before">
+        <p class="t-label">Before — raw notes</p>
+        <p class="t-body-before">"So I was leading the product launch for our enterprise tier, and three weeks before go-live the main vendor just disappeared — like, stopped responding entirely. I had to figure out if we rebuild the integration ourselves or find someone new, but the timeline was impossible either way. I pulled in the dev lead and we stayed on it all weekend. I kept the exec team updated every day even though there wasn't much good news to share. We ended up finding a backup vendor by Tuesday and hit the launch date. The product got a great reception. I always get lost trying to explain the middle part and worry it sounds too chaotic."</p>
       </div>
-      <div class="rm-transform-card rm-t-after">
-        <p class="rm-t-label">After — the recall map</p>
-        <span class="rm-t-tag">Talk track</span>
-        <p class="rm-t-body-after">"Vendor vanished three weeks before launch. I made the call, kept leadership informed daily, and we recovered with a new partner — on time."</p>
-        <div class="rm-keyword-chain">
-          <span class="rm-keyword">Vanished vendor</span>
-          <span class="rm-k-arrow">→</span>
-          <span class="rm-keyword">The call</span>
-          <span class="rm-k-arrow">→</span>
-          <span class="rm-keyword">Daily updates</span>
-          <span class="rm-k-arrow">→</span>
-          <span class="rm-keyword">Full recovery</span>
+      <div class="transform-card t-after">
+        <p class="t-label">After — the recall map</p>
+        <span class="t-tag">Talk track</span>
+        <p class="t-body-after">"Vendor vanished three weeks before launch. I made the call, kept leadership informed daily, and we recovered with a new partner — on time."</p>
+        <div class="keyword-chain">
+          <span class="keyword">Vanished vendor</span>
+          <span class="k-arrow">→</span>
+          <span class="keyword">The call</span>
+          <span class="k-arrow">→</span>
+          <span class="keyword">Daily updates</span>
+          <span class="k-arrow">→</span>
+          <span class="keyword">Full recovery</span>
         </div>
-        <div class="rm-image-box">
-          <p class="rm-image-box-label">Visual anchor</p>
-          <p class="rm-image-box-desc">A fire extinguisher mounted next to a front door — the extinguisher triggers the crisis, the door triggers the exit and result. One glance, full story.</p>
+        <div class="image-box">
+          <p class="image-box-label">Visual anchor</p>
+          <p class="image-box-desc">A fire extinguisher mounted next to a front door — the extinguisher triggers the crisis, the door triggers the exit and result. One glance, full story.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider">
+  <hr class="divider">
 
-  <div class="rm-section">
-    <p class="rm-section-label">How it works</p>
+  <!-- ── How It Works ── -->
+  <div class="section">
+    <span class="section-label">How it works</span>
     <h2>Three steps.<br>One story you'll never forget.</h2>
-    <div class="rm-steps">
-      <div class="rm-step">
-        <span class="rm-step-num">1</span>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
         <div>
-          <p class="rm-step-title">Share your raw notes</p>
-          <p class="rm-step-body">Paste the messy, unfiltered draft of what you want to say. No polish needed.</p>
+          <p class="step-title">Share your raw notes</p>
+          <p class="step-body">Paste the messy, unfiltered draft of what you want to say. No polish needed.</p>
         </div>
       </div>
-      <div class="rm-step">
-        <span class="rm-step-num">2</span>
+      <div class="step">
+        <span class="step-num">2</span>
         <div>
-          <p class="rm-step-title">We distill the logic</p>
-          <p class="rm-step-body">We strip the filler, detect the shape of your story, and match it to the right delivery framework automatically.</p>
+          <p class="step-title">We distill the logic</p>
+          <p class="step-body">We strip the filler, detect the shape of your story, and match it to the right delivery framework automatically.</p>
         </div>
       </div>
-      <div class="rm-step">
-        <span class="rm-step-num">3</span>
+      <div class="step">
+        <span class="step-num">3</span>
         <div>
-          <p class="rm-step-title">We anchor the memory</p>
-          <p class="rm-step-body">We generate three visual cues tied to your key points — everyday images that act as mental hooks you can't unsee.</p>
+          <p class="step-title">We anchor the memory</p>
+          <p class="step-body">We generate three visual cues tied to your key points — everyday images that act as mental hooks you can't unsee.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <hr class="rm-divider">
+  <hr class="divider">
 
-  <div class="rm-section">
-    <p class="rm-section-label">Early access pricing</p>
+  <!-- ── Pricing ── -->
+  <div class="section">
+    <span class="section-label">Early access pricing</span>
     <h2>Prep one story.<br>Or come ready for anything.</h2>
-    <div class="rm-pricing-wrap">
-      <p class="rm-pricing-tag">Beta founder rate</p>
-      <p class="rm-pricing-amount">$149</p>
-      <p class="rm-pricing-sub">Full interview prep — all 10 stories</p>
-      <ul class="rm-pricing-features">
-        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Concise talk track for each story</li>
-        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>3 visual memory anchors per story</li>
-        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Automatic framework matching for your story level</li>
-        <li class="rm-pricing-feature"><span class="rm-pricing-check"></span>Priority access during beta</li>
+    <div class="pricing-wrap">
+      <p class="pricing-tag">Beta founder rate</p>
+      <p class="pricing-amount">$149</p>
+      <p class="pricing-sub">Full interview prep — all 10 stories</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature"><span class="pricing-check">✓</span>Concise talk track for each story</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span>3 visual memory anchors per story</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span>Automatic framework matching for your story level</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span>Priority access during beta</li>
       </ul>
-      <button class="rm-btn">Claim My Founder Rate — $149</button>
-      <p class="rm-pricing-or">Just testing the water? Start with one story for $19.</p>
+      <a href="#waitlist" class="btn">Claim My Founder Rate — $149</a>
+      <p class="pricing-or">Just testing the water? Start with one story for $19.</p>
     </div>
   </div>
 
-  <div class="rm-waitlist">
+  <!-- ── Waitlist ── -->
+  <div class="waitlist" id="waitlist">
     <h2>Your next interview<br>is closer than you think.</h2>
     <p>Join the private beta. Be the first to turn<br>your stories into a map you'll never forget.</p>
-    <div class="rm-input-row">
-      <input class="rm-email-input" type="email" placeholder="your@email.com">
-      <button class="rm-btn" style="white-space:nowrap;padding:12px 20px;font-size:13px">Join waitlist</button>
-    </div>
+
+    <!-- Netlify Form -->
+    <form
+      class="waitlist-form"
+      name="waitlist"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      id="waitlist-form"
+    >
+      <input type="hidden" name="form-name" value="waitlist" />
+      <input type="hidden" name="bot-field" />
+      <input
+        class="email-input"
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        required
+        aria-label="Email address"
+      />
+      <button type="submit" class="btn btn-sm">Join waitlist</button>
+    </form>
+
+    <p class="form-success" id="form-success">
+      You're on the list — we'll be in touch soon.
+    </p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 The Recall Map &nbsp;·&nbsp; Built for people who know their material.
   </div>
 
 </div>
+
+<script>
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(() => {
+      alert('Something went wrong. Please try again.');
+    });
+  });
+</script>
+
+</body>
+</html>
